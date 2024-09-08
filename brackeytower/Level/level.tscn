@@ -7,17 +7,16 @@
 script = ExtResource("1_uctxv")
 
 [node name="camera" type="Camera2D" parent="."]
-offset = Vector2(576, 0)
-position_smoothing_enabled = true
+position = Vector2(576, 324)
 drag_vertical_enabled = true
 drag_left_margin = 1.0
 drag_top_margin = 0.0
 drag_right_margin = 1.0
-drag_bottom_margin = 1.0
+drag_bottom_margin = 0.75
 editor_draw_drag_margin = true
 
 [node name="player" parent="." instance=ExtResource("1_0n6wn")]
-position = Vector2(576, 509)
+position = Vector2(576, 547)
 
 [node name="firstPos" type="Marker2D" parent="."]
-position = Vector2(576, 648)
+position = Vector2(576, 608)
