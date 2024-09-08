@@ -15,7 +15,7 @@ func _ready(): #To begin, stack three sections.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	$camera.position.y = $player.position.y
 
 func place_section(pos): #The position determines the bottom center of the section.
 	var node = sections.pick_random().instantiate()

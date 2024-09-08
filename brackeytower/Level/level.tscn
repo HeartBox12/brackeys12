@@ -6,8 +6,15 @@
 [node name="world" type="Node2D"]
 script = ExtResource("1_uctxv")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-enabled = false
+[node name="camera" type="Camera2D" parent="."]
+offset = Vector2(576, 0)
+position_smoothing_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 1.0
+drag_top_margin = 0.0
+drag_right_margin = 1.0
+drag_bottom_margin = 1.0
+editor_draw_drag_margin = true
 
 [node name="player" parent="." instance=ExtResource("1_0n6wn")]
 position = Vector2(576, 509)
