@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1p4ymvljf843"]
+
+[ext_resource type="PackedScene" uid="uid://cpavncrwwvunr" path="res://Player/player.tscn" id="1_0n6wn"]
+[ext_resource type="Script" path="res://Level/level.gd" id="1_uctxv"]
+
+[node name="world" type="Node2D"]
+script = ExtResource("1_uctxv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+enabled = false
+
+[node name="player" parent="." instance=ExtResource("1_0n6wn")]
+position = Vector2(576, 509)
+
+[node name="firstPos" type="Marker2D" parent="."]
+position = Vector2(576, 648)

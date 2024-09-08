@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=4 uid="uid://dlay8xrpysfme"]
+
+[ext_resource type="Script" path="res://Level/sections/section.gd" id="1_584y7"]
+[ext_resource type="Texture2D" uid="uid://b16dvsypcrntg" path="res://Level/testTiles.png" id="1_no5xf"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hxsv4"]
+texture = ExtResource("1_no5xf")
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, -8, 8, 8, -8, 8, -8, -8)
+
+[sub_resource type="TileSet" id="TileSet_5ioh0"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/1 = SubResource("TileSetAtlasSource_hxsv4")
+
+[node name="Section1" type="Node2D"]
+script = ExtResource("1_584y7")
+
+[node name="nextSpot" type="Marker2D" parent="."]
+position = Vector2(0, -304)
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAAGAP//AQABAAEAAAAFAP//AQABAAEAAAAEAP//AQABAAEAAAADAP//AQABAAEAAAACAP//AQABAAEAAAABAP//AQABAAEAAAAAAP//AQABAAEAAAD/////AQABAAEAAAD+////AQABAAEAAAD9////AQABAAEAAAD8////AQABAAEAAAD7////AQABAAEAAAD6////AQABAAEAAAD5////AQABAAEAAAD5//7/AQAAAAEAAAD6//7/AQAAAAEAAAD7//7/AQAAAAEAAAD8//7/AQAAAAEAAAD9//7/AQAAAAEAAAD+//7/AQAAAAEAAAD///7/AQAAAAEAAAAAAP7/AQAAAAEAAAABAP7/AQAAAAEAAAACAP7/AQAAAAEAAAADAP7/AQAAAAEAAAAEAP7/AQAAAAEAAAAFAP7/AQAAAAEAAAAGAP7/AQAAAAEAAAAGAP3/AQABAAAAAAAFAP3/AQABAAAAAAAEAP3/AQABAAAAAAADAP3/AQABAAAAAAACAP3/AQABAAAAAAABAP3/AQABAAAAAAAAAP3/AQABAAAAAAD///3/AQABAAAAAAD+//3/AQABAAAAAAD9//3/AQABAAAAAAD8//3/AQABAAAAAAD7//3/AQABAAAAAAD6//3/AQABAAAAAAD5//3/AQABAAAAAAADAPf/AQABAAEAAAAEAPf/AQABAAEAAAAFAPf/AQABAAEAAAAGAPf/AQABAAEAAAAHAPf/AQABAAEAAAAIAPf/AQABAAEAAAAJAPL/AQABAAEAAAAKAPL/AQABAAEAAAALAPL/AQABAAEAAAAMAPL/AQABAAEAAAANAPL/AQABAAEAAAAOAPL/AQABAAEAAAD9//H/AQABAAEAAAD8//H/AQABAAEAAAD7//H/AQABAAEAAAD6//H/AQABAAEAAAD5//H/AQABAAEAAAD4//H/AQABAAEAAAD3//H/AQABAAEAAAD2//H/AQABAAEAAAD2////AQABAAEAAAD3////AQABAAEAAAD4////AQABAAEAAAAHAP//AQABAAEAAAAIAP//AQABAAEAAAAJAP//AQABAAEAAAAGAPz/AQAAAAAAAAAFAPz/AQAAAAAAAAAEAPz/AQAAAAAAAAADAPz/AQAAAAAAAAACAPz/AQAAAAAAAAABAPz/AQAAAAAAAAAAAPz/AQAAAAAAAAD///z/AQAAAAAAAAD+//z/AQAAAAAAAAD9//z/AQAAAAAAAAD8//z/AQAAAAAAAAD7//z/AQAAAAAAAAD6//z/AQAAAAAAAAD5//z/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_5ioh0")
+
+[node name="OnScreenChecker" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -304)
+
+[connection signal="screen_exited" from="OnScreenChecker" to="." method="_on_screen_exited"]
