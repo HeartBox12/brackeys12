@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="BrackeyTower"
-run/main_scene="res://Level/level.tscn"
+run/main_scene="res://manager/manager.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -43,6 +43,7 @@ jump={
 
 2d_physics/layer_1="platforms"
 2d_physics/layer_2="player"
+2d_physics/layer_3="water"
 
 [rendering]
 

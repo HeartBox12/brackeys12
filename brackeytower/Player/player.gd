@@ -4,7 +4,7 @@ extends Node2D
 @export var gravity:int
 @export var jumpForce:int
 
-var input:int #Unit vector representing player movement dir
+var input:float #Unit vector representing player movement dir
 var faceRight = false
 var grounded = true
 
