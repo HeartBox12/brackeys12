@@ -2,6 +2,7 @@ extends State
 @export var host:Node
 @export var machine:Node
 @export var sprite:Node
+@export var cooldown:Node
 
 var playerPos
 
@@ -26,6 +27,16 @@ func physics_update(delta): #Equivalent to func physics_process() in the host.
 			return
 		else:
 			swap.emit(self, "walk")
+			return
+	
+	if host.is_on_wall() and cooldown.is_stopped():
+		if host.faceRight:
+			host.faceRight = false
+			swap.emit(self, "wall_left")
+			return
+		else:
+			host.faceRight = true
+			swap.emit(self, "wall_right")
 			return
 	
 	if host.velocity.y > 0:

@@ -5,6 +5,7 @@ extends Node2D
 @export var gravity:int
 @export var jumpForce:int
 @export var accel:int
+@export var wallJumpForce:int
 
 var input:float #Unit vector representing player movement dir
 var faceRight = false

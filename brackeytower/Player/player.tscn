@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cpavncrwwvunr"]
+[gd_scene load_steps=43 format=3 uid="uid://cpavncrwwvunr"]
 
 [ext_resource type="Texture2D" uid="uid://lv8dxtyvj6mg" path="res://icon.svg" id="1_74pw3"]
 [ext_resource type="Script" path="res://Player/player.gd" id="1_b4rgk"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://Player/states/walk.gd" id="5_3170n"]
 [ext_resource type="Script" path="res://Player/states/air.gd" id="6_uhojq"]
 [ext_resource type="Script" path="res://Player/states/fall.gd" id="7_pe50q"]
+[ext_resource type="Script" path="res://Player/states/wall_right.gd" id="9_nssb4"]
+[ext_resource type="Script" path="res://Player/states/wall_left.gd" id="10_vlawk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vwob1"]
 radius = 4.0
@@ -123,6 +125,14 @@ region = Rect2(0, 8, 8, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_r861m"]
 atlas = ExtResource("3_vnqkc")
 region = Rect2(8, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0keta"]
+atlas = ExtResource("3_vnqkc")
+region = Rect2(16, 8, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaj13"]
+atlas = ExtResource("3_vnqkc")
+region = Rect2(16, 24, 8, 8)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_fq5rq"]
 animations = [{
@@ -259,6 +269,22 @@ animations = [{
 "loop": true,
 "name": &"walk_right",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0keta")
+}],
+"loop": true,
+"name": &"wall_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaj13")
+}],
+"loop": true,
+"name": &"wall_right",
+"speed": 5.0
 }]
 
 [node name="player" type="CharacterBody2D"]
@@ -277,7 +303,7 @@ metadata/_edit_lock_ = true
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_fq5rq")
-animation = &"walk_left"
+animation = &"wall_right"
 speed_scale = 2.0
 metadata/_edit_lock_ = true
 
@@ -297,14 +323,34 @@ host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
 
-[node name="air" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite")]
+[node name="air" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
 script = ExtResource("6_uhojq")
 host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
+cooldown = NodePath("../../wallCooldown")
 
-[node name="fall" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite")]
+[node name="fall" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
 script = ExtResource("7_pe50q")
 host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
+cooldown = NodePath("../../wallCooldown")
+
+[node name="wall_right" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
+script = ExtResource("9_nssb4")
+host = NodePath("../..")
+machine = NodePath("..")
+sprite = NodePath("../../sprite")
+cooldown = NodePath("../../wallCooldown")
+
+[node name="wall_left" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
+script = ExtResource("10_vlawk")
+host = NodePath("../..")
+machine = NodePath("..")
+sprite = NodePath("../../sprite")
+cooldown = NodePath("../../wallCooldown")
+
+[node name="wallCooldown" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
