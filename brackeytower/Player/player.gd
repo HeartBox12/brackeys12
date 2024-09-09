@@ -15,7 +15,7 @@ func _ready():
 func _process(_delta):
 	input = 0
 	
-	#Read keyboard/controller. Accounts for weird input and < 1 controller tilt.
+	#Read keyboard/controller. Accounts for weird input and > 1 controller tilt.
 	input += Input.get_action_strength("move_right")
 	input -= Input.get_action_strength("move_left")
 	if input > 1:
