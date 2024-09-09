@@ -5,7 +5,6 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_qdpnx"]
 font = ExtResource("1_s4r22")
-font_size = 64
 
 [node name="Menu" type="Control"]
 layout_mode = 3

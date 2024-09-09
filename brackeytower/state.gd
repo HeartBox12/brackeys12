@@ -17,3 +17,13 @@ func update(_delta:float): #Stand-in for process
 
 func physics_update(_delta:float): #Stand-in for Physics_process
 	pass
+
+func cterp(begin:float, end:float, step:float): #By-constant interpolation
+	if begin < end:
+		begin = begin + step
+		if begin > end: return end
+		else: return begin
+	else: 
+		begin = begin - step
+		if begin < end: return end
+		else: return begin

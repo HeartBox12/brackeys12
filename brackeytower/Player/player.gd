@@ -1,15 +1,23 @@
 extends Node2D
 
 @export var walkSpeed:int
+@export var fallSpeed:int
 @export var gravity:int
 @export var jumpForce:int
+@export var accel:int
 
 var input:float #Unit vector representing player movement dir
 var faceRight = false
+var lastFaceRight = false
 var grounded = true
 
+signal moved
+signal turnaround
+
 func _ready():
-	pass
+	$"State Machine/idle".swap.connect(_on_first_swap)
+	
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -26,6 +34,14 @@ func _process(_delta):
 			faceRight = true
 		elif input < 0:
 			faceRight = false
+	
+	if lastFaceRight != faceRight: turnaround.emit(faceRight)
+	
+	lastFaceRight = faceRight
 
 func _physics_process(_delta):
 	pass
+
+func _on_first_swap(_origin, _dest):
+	moved.emit()
+	$"State Machine/idle".swap.disconnect(_on_first_swap)

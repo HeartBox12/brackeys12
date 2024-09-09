@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bibh62tpa3y6t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fet46"]
+size = Vector2(8, 8)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kdvux"]
+size = Vector2(8, 2)
+
+[node name="button" type="Area2D"]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_fet46")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 3)
+texture = SubResource("PlaceholderTexture2D_kdvux")

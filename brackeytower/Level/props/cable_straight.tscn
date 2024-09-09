@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://xh14mlxn1gre"]
+
+[ext_resource type="Texture2D" uid="uid://lv8dxtyvj6mg" path="res://icon.svg" id="1_jm85s"]
+[ext_resource type="Script" path="res://Level/props/cable.gd" id="2_1jpm3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqbql"]
+atlas = ExtResource("1_jm85s")
+region = Rect2(56, 80, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rb3fi"]
+atlas = ExtResource("1_jm85s")
+region = Rect2(64, 80, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ab3e"]
+atlas = ExtResource("1_jm85s")
+region = Rect2(56, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_he71o"]
+atlas = ExtResource("1_jm85s")
+region = Rect2(64, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sw67"]
+atlas = ExtResource("1_jm85s")
+region = Rect2(88, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0h7nx"]
+atlas = ExtResource("1_jm85s")
+region = Rect2(80, 24, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj56c"]
+atlas = ExtResource("1_jm85s")
+region = Rect2(80, 32, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_768vt"]
+atlas = ExtResource("1_jm85s")
+region = Rect2(80, 40, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rr76f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqbql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rb3fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ab3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_he71o")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sw67")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0h7nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj56c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_768vt")
+}],
+"loop": false,
+"name": &"power",
+"speed": 5.0
+}]
+
+[node name="cableStraight" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_rr76f")
+animation = &"power"
+script = ExtResource("2_1jpm3")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

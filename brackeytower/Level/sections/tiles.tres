@@ -1,0 +1,23 @@
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dh5umrf15i87n"]
+
+[ext_resource type="Texture2D" uid="uid://b16dvsypcrntg" path="res://Level/testTiles.png" id="1_hosjv"]
+[ext_resource type="PackedScene" uid="uid://bibh62tpa3y6t" path="res://Level/props/button.tscn" id="2_jd06w"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b067d"]
+texture = ExtResource("1_hosjv")
+texture_region_size = Vector2i(8, 8)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_cdcsv"]
+scenes/1/scene = ExtResource("2_jd06w")
+
+[resource]
+tile_size = Vector2i(8, 8)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/2 = SubResource("TileSetAtlasSource_b067d")
+sources/3 = SubResource("TileSetScenesCollectionSource_cdcsv")

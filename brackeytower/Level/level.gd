@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var waterSpeed:int = 50
+@export var waterSpeed:int = 0
 
 var sectionScenes = [preload("res://Level/sections/section_1.tscn"),
 	preload("res://Level/sections/section_2.tscn"),
@@ -17,7 +17,7 @@ signal end
 
 func _ready(): #To begin, stack three sections.
 	
-	sectionNodes.append(place_section($firstPos.position))
+	sectionNodes.append($startSection)
 	sectionNodes.append(place_section(sectionNodes[0].next_pos))
 	sectionNodes.append(place_section(sectionNodes[1].next_pos))
 	
@@ -28,7 +28,7 @@ func _ready(): #To begin, stack three sections.
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$camera.position.y = $player.position.y
-	$Control.set_position($camera.get_target_position() + UIOffset)
+	$Loss.set_position($camera.get_target_position() + UIOffset)
 
 func _physics_process(delta):
 	$water.position.y -= waterSpeed * delta
@@ -50,3 +50,6 @@ func _on_water_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
 
 func main_menu():
 	end.emit()
+
+func _on_player_moved():
+	$Anims.play("start")

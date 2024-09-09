@@ -32,7 +32,7 @@ func physics_update(delta): #Equivalent to func physics_process() in the host.
 		swap.emit(self, "fall")
 		return
 	
-	host.velocity.x = host.input * host.walkSpeed * delta
+	host.velocity.x = cterp(host.velocity.x, host.input * host.walkSpeed, host.accel * delta)
 	host.velocity.y += host.gravity * delta
 	
 	host.move_and_slide()
