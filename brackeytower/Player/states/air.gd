@@ -39,9 +39,14 @@ func physics_update(delta): #Equivalent to func physics_process() in the host.
 		swap.emit(self, "wall_right")
 		return
 	
+	#The player has reached the apex of their jump
 	if host.velocity.y > 0:
 		swap.emit(self, "fall")
 		return
+	
+	#The player can hold the jump button to go higher
+	if Input.is_action_pressed("jump"):
+		host.velocity.y -= host.flyForce * delta
 	
 	host.velocity.x = cterp(host.velocity.x, host.input * host.walkSpeed, host.accel * delta)
 	host.velocity.y += host.gravity * delta

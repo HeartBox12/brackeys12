@@ -6,6 +6,9 @@ extends Node2D
 @export var jumpForce:int
 @export var accel:int
 @export var wallJumpForce:int
+@export var flyForce:int #How effective holding up is when jumping upwards
+
+@export var hasDoubleJump:bool = false
 
 var input:float #Unit vector representing player movement dir
 var faceRight = false

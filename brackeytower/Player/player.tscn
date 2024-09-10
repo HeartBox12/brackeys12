@@ -209,10 +209,10 @@ script = ExtResource("1_b4rgk")
 walkSpeed = 75
 fallSpeed = 400
 gravity = 1000
-jumpForce = 300
+jumpForce = 200
 accel = 1000
 wallJumpForce = 150
-metadata/_edit_lock_ = true
+flyForce = 500
 
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_2d8t8")
@@ -247,7 +247,21 @@ machine = NodePath("..")
 sprite = NodePath("../../sprite")
 cooldown = NodePath("../../wallCooldown")
 
+[node name="d-air" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
+script = ExtResource("6_uhojq")
+host = NodePath("../..")
+machine = NodePath("..")
+sprite = NodePath("../../sprite")
+cooldown = NodePath("../../wallCooldown")
+
 [node name="fall" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
+script = ExtResource("7_pe50q")
+host = NodePath("../..")
+machine = NodePath("..")
+sprite = NodePath("../../sprite")
+cooldown = NodePath("../../wallCooldown")
+
+[node name="d-fall" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
 script = ExtResource("7_pe50q")
 host = NodePath("../..")
 machine = NodePath("..")

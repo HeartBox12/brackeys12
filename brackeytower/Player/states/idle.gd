@@ -28,6 +28,7 @@ func physics_update(delta):
 	if Input.is_action_just_pressed("jump"):
 		host.velocity.y -= host.jumpForce
 		swap.emit(self, "air")
+		host.move_and_slide()
 		return
 	
 	if host.input != 0:
