@@ -46,3 +46,9 @@ func _physics_process(_delta):
 func _on_first_swap(_origin, _dest):
 	moved.emit()
 	$"State Machine/idle".swap.disconnect(_on_first_swap)
+
+func is_on_right_wall():
+	return $rightWallRay.is_colliding()
+
+func is_on_left_wall():
+	return $leftWallRay.is_colliding()

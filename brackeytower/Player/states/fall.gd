@@ -29,15 +29,15 @@ func physics_update(delta): #Equivalent to func physics_process() in the host.
 			swap.emit(self, "walk")
 			return
 	
-	if host.is_on_wall() and cooldown.is_stopped():
-		if host.faceRight:
-			host.faceRight = false
-			swap.emit(self, "wall_left")
-			return
-		else:
-			host.faceRight = true
-			swap.emit(self, "wall_right")
-			return
+	if host.is_on_right_wall() and cooldown.is_stopped():
+		host.faceRight = false
+		swap.emit(self, "wall_left")
+		return
+		
+	if host.is_on_left_wall() and cooldown.is_stopped():
+		host.faceRight = true
+		swap.emit(self, "wall_right")
+		return
 	
 	host.velocity.x = cterp(host.velocity.x, host.input * host.walkSpeed, host.accel * delta)
 	host.velocity.y = cterp(host.velocity.y, host.fallSpeed, host.gravity * delta)

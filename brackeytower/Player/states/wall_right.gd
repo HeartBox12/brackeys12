@@ -6,6 +6,7 @@ extends State
 
 func enter(): #When this state is entered
 	sprite.play("wall_right")
+	host.velocity = Vector2(0, 0)
 	
 func exit(): #Just before this state is exited
 	cooldown.start()
