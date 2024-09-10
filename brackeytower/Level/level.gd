@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var waterSpeed:int = 0
+@export var notLost:bool = true
+@export var maxPlayerLead:int
 
 var sectionScenes = [preload("res://Level/sections/section_1.tscn"),
 	preload("res://Level/sections/section_2.tscn"),
@@ -27,11 +29,14 @@ func _ready(): #To begin, stack three sections.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$camera.position.y = $player.position.y
+	if notLost:
+		$camera.position.y = $player.position.y
 	$Loss.set_position($camera.get_target_position() + UIOffset)
 
 func _physics_process(delta):
 	$water.position.y -= waterSpeed * delta
+	if $water.position.y - $player.position.y > maxPlayerLead:
+		$water.position.y = $player.position.y + maxPlayerLead
 
 func place_section(pos): #The position determines the bottom center of the section.
 	var node = sectionScenes.pick_random().instantiate()

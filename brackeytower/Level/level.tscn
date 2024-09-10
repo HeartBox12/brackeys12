@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1p4ymvljf843"]
+[gd_scene load_steps=15 format=3 uid="uid://c1p4ymvljf843"]
 
 [ext_resource type="PackedScene" uid="uid://cpavncrwwvunr" path="res://Player/player.tscn" id="1_0n6wn"]
 [ext_resource type="Script" path="res://Level/level.gd" id="1_uctxv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cqk4fjaj7ibbw" path="res://Level/cloudTest.png" id="5_onr6u"]
 [ext_resource type="PackedScene" uid="uid://demcalvxcshjq" path="res://Level/sections/section_start.tscn" id="6_2jsp5"]
 [ext_resource type="Texture2D" uid="uid://cixpj6hhfcmjb" path="res://Level/lighthouse_sec_2.png" id="6_y4ulm"]
+[ext_resource type="Texture2D" uid="uid://dywwxx5o7s1yi" path="res://Level/lighthouse_base.png" id="9_yflvv"]
 
 [sub_resource type="Animation" id="Animation_i58lc"]
 length = 0.001
@@ -83,6 +84,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [Color(0.156863, 0.611765, 0.956863, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:notLost")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_tjwcv"]
 resource_name = "loss"
@@ -111,6 +124,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:notLost")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_e0u25"]
@@ -200,25 +225,23 @@ font_size = 32
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_uctxv")
+maxPlayerLead = 200
 
 [node name="startSection" parent="." instance=ExtResource("6_2jsp5")]
-position = Vector2(640, 720)
+position = Vector2(160, 180)
 metadata/_edit_lock_ = true
 
 [node name="camera" type="Camera2D" parent="."]
-position = Vector2(640, 360)
+position = Vector2(160, 180)
+limit_bottom = 180
 
 [node name="player" parent="." instance=ExtResource("1_0n6wn")]
 z_index = 1
-position = Vector2(644, 708)
-
-[node name="firstPos" type="Marker2D" parent="."]
-position = Vector2(640, 576)
+position = Vector2(158, 168)
 
 [node name="water" parent="." instance=ExtResource("3_khv00")]
 z_index = 1
-position = Vector2(640, 798)
-metadata/_edit_lock_ = true
+position = Vector2(161, 359)
 
 [node name="Anims" type="AnimationPlayer" parent="."]
 libraries = {
@@ -266,13 +289,14 @@ metadata/_edit_lock_ = true
 [node name="frontLayer" type="ParallaxLayer" parent="Background"]
 z_index = 1
 motion_mirroring = Vector2(0, 360)
+metadata/_edit_lock_ = true
 
 [node name="lighthouse1" type="Sprite2D" parent="Background/frontLayer"]
+position = Vector2(0, 180)
 texture = ExtResource("5_0tstg")
 centered = false
 
 [node name="lighthouse2" type="Sprite2D" parent="Background/frontLayer"]
-position = Vector2(0, 180)
 texture = ExtResource("6_y4ulm")
 centered = false
 
@@ -310,6 +334,11 @@ offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.156863, 0.611765, 0.956863, 1)
 metadata/_edit_lock_ = true
+
+[node name="LighthouseBase" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(160, 90)
+texture = ExtResource("9_yflvv")
 
 [connection signal="offscreen" from="startSection" to="." method="_on_section_offscreen"]
 [connection signal="moved" from="player" to="." method="_on_player_moved"]
