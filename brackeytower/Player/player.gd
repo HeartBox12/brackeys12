@@ -17,8 +17,6 @@ signal turnaround
 
 func _ready():
 	$"State Machine/idle".swap.connect(_on_first_swap)
-	
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

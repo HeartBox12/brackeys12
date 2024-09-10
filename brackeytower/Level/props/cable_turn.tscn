@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://cm5gawt6hec7m"]
+
+[ext_resource type="Texture2D" uid="uid://cagtty2f0atxq" path="res://Level/props/cable.png" id="1_3oq05"]
+[ext_resource type="Script" path="res://Level/props/cable.gd" id="2_voy3v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2x2g"]
+atlas = ExtResource("1_3oq05")
+region = Rect2(8, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwf1x"]
+atlas = ExtResource("1_3oq05")
+region = Rect2(0, 16, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vsm8f"]
+atlas = ExtResource("1_3oq05")
+region = Rect2(8, 16, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myi6i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2x2g")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwf1x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vsm8f")
+}],
+"loop": false,
+"name": &"power",
+"speed": 5.0
+}]
+
+[node name="cableTurn" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_myi6i")
+animation = &"power"
+script = ExtResource("2_voy3v")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
