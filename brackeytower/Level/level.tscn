@@ -222,6 +222,7 @@ _data = {
 
 [sub_resource type="LabelSettings" id="LabelSettings_w6vld"]
 font_size = 32
+font_color = Color(0, 0, 0, 1)
 
 [node name="level" type="Node2D"]
 script = ExtResource("1_uctxv")
