@@ -7,16 +7,18 @@
 script = ExtResource("1_e4vuk")
 
 [node name="nextSpot" type="Marker2D" parent="."]
-position = Vector2(0, -136)
+position = Vector2(0, -120)
+metadata/_edit_lock_ = true
 
 [node name="Tiles" type="TileMapLayer" parent="."]
 use_parent_material = true
 tile_map_data = PackedByteArray("AAAEAP//AAACAAEAAAADAP//AAABAAAAAAACAP//AAABAAAAAAABAP//AAABAAAAAAAAAP//AAABAAAAAAD/////AAABAAAAAAD+////AAABAAAAAAD9////AAABAAAAAAD8////AAABAAAAAAAEAPv/AAABAAAAAAAFAPv/AAACAAEAAAADAPv/AAABAAAAAAACAPv/AAABAAAAAAABAPv/AAABAAAAAAAAAPv/AAABAAIAAAD1//n/AAABAAIAAAD2//n/AAABAAAAAAD3//n/AAABAAAAAAD4//n/AAABAAAAAAD5//n/AAABAAAAAAD6//n/AAACAAEAAADw//T/AAABAAAAAADx//T/AAABAAAAAADy//T/AAABAAAAAADz//T/AAABAAAAAAD0//T/AAABAAAAAAD1//T/AAABAAAAAAD2//T/AAABAAAAAAD3//T/AAACAAEAAADv//T/AAABAAIAAAD7////AAABAAIAAAA=")
 tile_set = ExtResource("2_xmqbq")
+metadata/_edit_lock_ = true
 
 [node name="OnScreenChecker" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(-6.50002, -67)
-scale = Vector2(19.15, 6.6)
+position = Vector2(-6.50002, -60)
+scale = Vector2(19.15, 6)
 
 [connection signal="screen_entered" from="OnScreenChecker" to="." method="_on_screen_entered"]
 [connection signal="screen_exited" from="OnScreenChecker" to="." method="_on_screen_exited"]
