@@ -25,10 +25,6 @@ func exit(): #Just before this state is exited
 	host.turnaround.disconnect(_on_turnaround)
 
 func update(_delta): #Equivalent to func process(delta) in the host. Only use process() to call this
-	if Input.is_action_just_pressed("jump"):
-		host.velocity.y -= host.jumpForce
-		swap.emit(self, "air")
-		return
 	
 	if host.input == 0:
 		swap.emit(self, "idle")
@@ -38,6 +34,12 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 	lastFace = host.faceRight
 
 func physics_update(delta): #Equivalent to func physics_process() in the host.
+	if Input.is_action_just_pressed("jump"):
+		host.velocity.y -= host.jumpForce
+		swap.emit(self, "air")
+		host.move_and_slide()
+		return
+	
 	if not host.is_on_floor:
 		swap.emit(self, "fall")
 		return

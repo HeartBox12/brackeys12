@@ -11,8 +11,9 @@
 [ext_resource type="Script" path="res://Player/states/wall_right.gd" id="9_nssb4"]
 [ext_resource type="Script" path="res://Player/states/wall_left.gd" id="10_vlawk"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vwob1"]
-radius = 4.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2d8t8"]
+radius = 2.0
+height = 8.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gpbw5"]
 atlas = ExtResource("1_74pw3")
@@ -290,15 +291,16 @@ animations = [{
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_b4rgk")
-walkSpeed = 100
+walkSpeed = 75
 fallSpeed = 400
 gravity = 1000
-jumpForce = 400
+jumpForce = 300
 accel = 1000
+wallJumpForce = 150
 metadata/_edit_lock_ = true
 
 [node name="shape" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_vwob1")
+shape = SubResource("CapsuleShape2D_2d8t8")
 metadata/_edit_lock_ = true
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
@@ -356,7 +358,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="rightWallRay" type="RayCast2D" parent="."]
-target_position = Vector2(5, 0)
+target_position = Vector2(3, 0)
 
 [node name="leftWallRay" type="RayCast2D" parent="."]
-target_position = Vector2(-5, 0)
+target_position = Vector2(-3, 0)

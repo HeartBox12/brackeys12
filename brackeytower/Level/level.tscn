@@ -289,7 +289,6 @@ position = Vector2(1440, 18)
 texture = ExtResource("5_onr6u")
 
 [node name="ColorRect" type="ColorRect" parent="Background/ParallaxLayer"]
-visible = false
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.156863, 0.611765, 0.956863, 1)
