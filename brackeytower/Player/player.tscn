@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cpavncrwwvunr"]
+[gd_scene load_steps=32 format=3 uid="uid://cpavncrwwvunr"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_b4rgk"]
 [ext_resource type="Script" path="res://Player/state_machine.gd" id="2_4wg2w"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" path="res://Player/states/idle.gd" id="4_mmwnf"]
 [ext_resource type="Script" path="res://Player/states/walk.gd" id="5_3170n"]
 [ext_resource type="Script" path="res://Player/states/air.gd" id="6_uhojq"]
+[ext_resource type="Script" path="res://Player/states/d_air.gd" id="7_irk8n"]
 [ext_resource type="Script" path="res://Player/states/fall.gd" id="7_pe50q"]
+[ext_resource type="Script" path="res://Player/states/d_fall.gd" id="9_nrnnd"]
 [ext_resource type="Script" path="res://Player/states/wall_right.gd" id="9_nssb4"]
 [ext_resource type="Script" path="res://Player/states/wall_left.gd" id="10_vlawk"]
 
@@ -224,9 +226,10 @@ animation = &"walk_right"
 speed_scale = 2.0
 metadata/_edit_lock_ = true
 
-[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initState")]
+[node name="State Machine" type="Node" parent="." node_paths=PackedStringArray("initState", "label")]
 script = ExtResource("2_4wg2w")
 initState = NodePath("fall")
+label = NodePath("../Label")
 
 [node name="idle" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite")]
 script = ExtResource("4_mmwnf")
@@ -248,7 +251,7 @@ sprite = NodePath("../../sprite")
 cooldown = NodePath("../../wallCooldown")
 
 [node name="d-air" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
-script = ExtResource("6_uhojq")
+script = ExtResource("7_irk8n")
 host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
@@ -262,7 +265,7 @@ sprite = NodePath("../../sprite")
 cooldown = NodePath("../../wallCooldown")
 
 [node name="d-fall" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
-script = ExtResource("7_pe50q")
+script = ExtResource("9_nrnnd")
 host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
@@ -291,3 +294,7 @@ target_position = Vector2(3, 0)
 
 [node name="leftWallRay" type="RayCast2D" parent="."]
 target_position = Vector2(-3, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

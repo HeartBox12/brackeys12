@@ -39,6 +39,11 @@ func physics_update(delta): #Equivalent to func physics_process() in the host.
 		swap.emit(self, "wall_right")
 		return
 	
+	if Input.is_action_just_pressed("jump") and host.hasDoubleJump:
+		host.velocity.y = -host.jumpForce
+		swap.emit(self, "d-air")
+		return
+	
 	#The player has reached the apex of their jump
 	if host.velocity.y > 0:
 		swap.emit(self, "fall")

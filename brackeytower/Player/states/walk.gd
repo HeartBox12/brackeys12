@@ -35,7 +35,7 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 
 func physics_update(delta): #Equivalent to func physics_process() in the host.
 	if Input.is_action_just_pressed("jump"):
-		host.velocity.y -= host.jumpForce
+		host.velocity.y = -host.jumpForce
 		swap.emit(self, "air")
 		host.move_and_slide()
 		return

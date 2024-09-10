@@ -5,6 +5,8 @@ var states:Dictionary = {}
 
 @export var initState:State
 
+@export var label:Node
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	for node in get_children(): #For each node-child...
@@ -31,4 +33,5 @@ func on_swap(curr:State, newName:StringName): #Curr = current state. New = incom
 		
 	curr.exit()
 	currentState = newState #Refactor later and just use currentState. NOTE: this will not be compatible with checks
+	label.text = newName
 	newState.enter()

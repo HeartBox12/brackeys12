@@ -25,21 +25,23 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 
 func physics_update(delta):
 	
+	#Jumped
 	if Input.is_action_just_pressed("jump"):
-		host.velocity.y -= host.jumpForce
+		host.velocity.y = -host.jumpForce
 		swap.emit(self, "air")
 		host.move_and_slide()
 		return
 	
+	#Started walking
 	if host.input != 0:
 		swap.emit(self, "walk")
 		return
 	
+	#walked off an edge
 	if not host.is_on_floor():
 		swap.emit(self, "fall")
 		return
 	
-	#cterp is defined in state.gd
 	host.velocity.x = cterp(host.velocity.x, 0, host.accel * delta)
 	host.velocity.y += host.gravity * delta
 	host.move_and_slide()

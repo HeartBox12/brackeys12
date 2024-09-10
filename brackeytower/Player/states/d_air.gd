@@ -15,9 +15,9 @@ func exit(): #Just before this state is exited
 
 func update(_delta): #Equivalent to func process(delta) in the host. Only use process() to call this
 	if host.faceRight:
-		sprite.play("fall_right")
+		sprite.play("air_right")
 	else:
-		sprite.play("fall_left")
+		sprite.play("air_left")
 
 func physics_update(delta): #Equivalent to func physics_process() in the host.
 	
@@ -39,14 +39,16 @@ func physics_update(delta): #Equivalent to func physics_process() in the host.
 		swap.emit(self, "wall_right")
 		return
 	
-	if Input.is_action_just_pressed("jump") and host.hasDoubleJump:
-		host.velocity.y = -host.jumpForce
-		swap.emit(self, "d-air")
+	#The player has reached the apex of their jump
+	if host.velocity.y > 0:
+		swap.emit(self, "d-fall")
 		return
 	
-	host.velocity.x = cterp(host.velocity.x, host.input * host.walkSpeed, host.accel * delta)
-	host.velocity.y = cterp(host.velocity.y, host.fallSpeed, host.gravity * delta)
+	#The player can hold the jump button to go higher
+	if Input.is_action_pressed("jump"):
+		host.velocity.y -= host.flyForce * delta
 	
-	var temp = host.velocity
+	host.velocity.x = cterp(host.velocity.x, host.input * host.walkSpeed, host.accel * delta)
+	host.velocity.y += host.gravity * delta
 	
 	host.move_and_slide()

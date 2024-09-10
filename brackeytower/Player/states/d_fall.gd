@@ -39,11 +39,6 @@ func physics_update(delta): #Equivalent to func physics_process() in the host.
 		swap.emit(self, "wall_right")
 		return
 	
-	if Input.is_action_just_pressed("jump") and host.hasDoubleJump:
-		host.velocity.y = -host.jumpForce
-		swap.emit(self, "d-air")
-		return
-	
 	host.velocity.x = cterp(host.velocity.x, host.input * host.walkSpeed, host.accel * delta)
 	host.velocity.y = cterp(host.velocity.y, host.fallSpeed, host.gravity * delta)
 	
