@@ -10,6 +10,14 @@ extends Node2D
 
 @export var hasDoubleJump:bool = false
 
+var stepSounds = [preload("res://sounds/sea tower sfx - footstep a.wav"),
+preload("res://sounds/sea tower sfx - footstep b.wav"),
+preload("res://sounds/sea tower sfx - foostep c.wav"),
+preload("res://sounds/sea tower sfx - footstep d.wav")]
+var jumpSound = preload("res://sounds/sea tower sfx - jump.wav")
+var landSound = preload("res://sounds/sea tower sfx - land.wav")
+var dJumpSound = preload("res://sounds/sea tower sfx - double jump.wav")
+
 var input:float #Unit vector representing player movement dir
 var faceRight = false
 var lastFaceRight = false
@@ -20,6 +28,9 @@ signal turnaround
 
 func _ready():
 	$"State Machine/idle".swap.connect(_on_first_swap)
+	
+	for node in $Audio.get_children():
+		node.volume_db = Global.volume_db
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

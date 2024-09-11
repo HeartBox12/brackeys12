@@ -3,6 +3,10 @@ extends State
 @export var machine:Node
 @export var sprite:Node
 
+@export var jumpSound:Node
+@export var stepSounds:Array #FIXME: Not working right. Cannot get the right values in.
+@export var stepSound:Node
+
 var playerPos
 var lastFace:bool
 
@@ -18,10 +22,12 @@ func enter(): #When this state is entered
 			sprite.play("walk_left")
 		
 	sprite.animation_finished.connect(_on_sprite_animation_finished)
+	sprite.animation_looped.connect(_on_sprite_animation_looped)
 	host.turnaround.connect(_on_turnaround)
 	
 func exit(): #Just before this state is exited
 	sprite.animation_finished.disconnect(_on_sprite_animation_finished)
+	sprite.animation_looped.disconnect(_on_sprite_animation_looped)
 	host.turnaround.disconnect(_on_turnaround)
 
 func update(_delta): #Equivalent to func process(delta) in the host. Only use process() to call this
@@ -36,6 +42,7 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 func physics_update(delta): #Equivalent to func physics_process() in the host.
 	if Input.is_action_just_pressed("jump"):
 		host.velocity.y = -host.jumpForce
+		jumpSound.play()
 		swap.emit(self, "air")
 		host.move_and_slide()
 		return
@@ -59,3 +66,6 @@ func _on_turnaround(faceRight:bool):
 		sprite.play("turn_right")
 	else:
 		sprite.play("turn_left")
+
+func _on_sprite_animation_looped():
+	stepSound.play()

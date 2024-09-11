@@ -3,6 +3,8 @@ extends State
 @export var machine:Node
 @export var sprite:Node
 
+@export var jumpSound:Node
+
 func enter(): #When this state is entered
 	if sprite.animation.begins_with("turn"):
 		pass
@@ -28,6 +30,7 @@ func physics_update(delta):
 	#Jumped
 	if Input.is_action_just_pressed("jump"):
 		host.velocity.y = -host.jumpForce
+		jumpSound.play()
 		swap.emit(self, "air")
 		host.move_and_slide()
 		return

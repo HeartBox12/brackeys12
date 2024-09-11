@@ -3,6 +3,7 @@ extends State
 @export var machine:Node
 @export var sprite:Node
 @export var cooldown:Node
+@export var jumpSound:Node
 
 func enter(): #When this state is entered
 	sprite.play("wall_right")
@@ -19,6 +20,7 @@ func physics_update(delta):
 	if Input.is_action_just_pressed("jump"):
 		host.velocity.x = host.wallJumpForce
 		host.velocity.y = -host.jumpForce
+		jumpSound.play()
 		host.position.x += 1
 		swap.emit(self, "air")
 		return

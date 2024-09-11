@@ -19,4 +19,5 @@ func _on_screen_exited():
 	offscreen.emit(self)
 
 func _on_button_pressed():
-	get_tree().call_group("cables", "open")
+	for node in $cableInstances.get_children():
+		node.open()

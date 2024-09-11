@@ -3,12 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://cpavncrwwvunr" path="res://Player/player.tscn" id="1_0n6wn"]
 [ext_resource type="Script" path="res://Level/level.gd" id="1_uctxv"]
 [ext_resource type="PackedScene" uid="uid://dcujp3n70di0" path="res://Level/water.tscn" id="3_khv00"]
-[ext_resource type="Texture2D" uid="uid://bn2xpu0afxe6l" path="res://Level/lighthouse_sec_1.png" id="5_0tstg"]
 [ext_resource type="Texture2D" uid="uid://dv2h6fts4a2ci" path="res://Level/fullRain.tres" id="5_eesrd"]
+[ext_resource type="Texture2D" uid="uid://bhd0web2b3h37" path="res://Level/lighthouse.png" id="5_hu0cw"]
 [ext_resource type="Texture2D" uid="uid://cqk4fjaj7ibbw" path="res://Level/cloudTest.png" id="5_onr6u"]
 [ext_resource type="PackedScene" uid="uid://demcalvxcshjq" path="res://Level/sections/section_start.tscn" id="6_2jsp5"]
-[ext_resource type="Texture2D" uid="uid://cixpj6hhfcmjb" path="res://Level/lighthouse_sec_2.png" id="6_y4ulm"]
-[ext_resource type="Texture2D" uid="uid://dywwxx5o7s1yi" path="res://Level/lighthouse_base.png" id="9_yflvv"]
 
 [sub_resource type="Animation" id="Animation_i58lc"]
 length = 0.001
@@ -224,6 +222,14 @@ _data = {
 font_size = 32
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn868"]
+atlas = ExtResource("5_hu0cw")
+region = Rect2(0, 0, 320, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0dfh"]
+atlas = ExtResource("5_hu0cw")
+region = Rect2(0, 359, 320, 181)
+
 [node name="level" type="Node2D"]
 script = ExtResource("1_uctxv")
 maxPlayerLead = 200
@@ -292,13 +298,8 @@ z_index = 1
 motion_mirroring = Vector2(0, 360)
 metadata/_edit_lock_ = true
 
-[node name="lighthouse1" type="Sprite2D" parent="Background/frontLayer"]
-position = Vector2(0, 180)
-texture = ExtResource("5_0tstg")
-centered = false
-
 [node name="lighthouse2" type="Sprite2D" parent="Background/frontLayer"]
-texture = ExtResource("6_y4ulm")
+texture = SubResource("AtlasTexture_fn868")
 centered = false
 
 [node name="rainLayer" type="ParallaxLayer" parent="Background"]
@@ -339,7 +340,7 @@ metadata/_edit_lock_ = true
 [node name="LighthouseBase" type="Sprite2D" parent="."]
 z_index = -1
 position = Vector2(160, 90)
-texture = ExtResource("9_yflvv")
+texture = SubResource("AtlasTexture_s0dfh")
 
 [connection signal="offscreen" from="startSection" to="." method="_on_section_offscreen"]
 [connection signal="moved" from="player" to="." method="_on_player_moved"]

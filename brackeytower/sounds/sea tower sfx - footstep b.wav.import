@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cufynlx1tn1xd"
+path="res://.godot/imported/sea tower sfx - footstep b.wav-12fd40c0433634f6aaa22ccd5f995151.sample"
+
+[deps]
+
+source_file="res://sounds/sea tower sfx - footstep b.wav"
+dest_files=["res://.godot/imported/sea tower sfx - footstep b.wav-12fd40c0433634f6aaa22ccd5f995151.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

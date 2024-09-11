@@ -3,6 +3,7 @@ extends State
 @export var machine:Node
 @export var sprite:Node
 @export var cooldown:Node
+@export var landSound:Node
 
 var playerPos
 
@@ -22,6 +23,7 @@ func update(_delta): #Equivalent to func process(delta) in the host. Only use pr
 func physics_update(delta): #Equivalent to func physics_process() in the host.
 	
 	if host.is_on_floor(): #No longer in the air
+		landSound.play()
 		if host.input == 0:
 			swap.emit(self, "idle")
 			return

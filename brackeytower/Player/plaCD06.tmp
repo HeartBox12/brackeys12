@@ -247,11 +247,11 @@ jumpSound = NodePath("../../Audio/jump")
 
 [node name="walk" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "jumpSound", "stepSound")]
 script = ExtResource("5_3170n")
+stepSounds = [NodePath("../../Audio/step1"), NodePath("../../Audio/step2"), NodePath("../../Audio/step3"), NodePath("../../Audio/step4")]
 host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
 jumpSound = NodePath("../../Audio/jump")
-stepSounds = [NodePath("../../Audio/step1"), NodePath("../../Audio/step2"), NodePath("../../Audio/step3"), NodePath("../../Audio/step4")]
 stepSound = NodePath("../../Audio/step1")
 
 [node name="air" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
@@ -268,7 +268,7 @@ machine = NodePath("..")
 sprite = NodePath("../../sprite")
 cooldown = NodePath("../../wallCooldown")
 
-[node name="fall" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown", "landSound")]
+[node name="fall" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
 script = ExtResource("7_pe50q")
 host = NodePath("../..")
 machine = NodePath("..")
@@ -285,11 +285,11 @@ cooldown = NodePath("../../wallCooldown")
 
 [node name="wall_right" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
 script = ExtResource("9_nssb4")
+jumpSound = NodePath("../../Audio/jump")
 host = NodePath("../..")
 machine = NodePath("..")
 sprite = NodePath("../../sprite")
 cooldown = NodePath("../../wallCooldown")
-jumpSound = NodePath("../../Audio/jump")
 
 [node name="wall_left" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown", "jumpSound")]
 script = ExtResource("10_vlawk")

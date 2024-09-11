@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dx1hr3clhv25j"
+path="res://.godot/imported/sea tower sfx - foostep c.wav-50485e8691bbe36c3a2fd42aeaf8cb0e.sample"
+
+[deps]
+
+source_file="res://sounds/sea tower sfx - foostep c.wav"
+dest_files=["res://.godot/imported/sea tower sfx - foostep c.wav-50485e8691bbe36c3a2fd42aeaf8cb0e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
