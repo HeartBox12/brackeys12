@@ -19,6 +19,7 @@ const UIOffset = Vector2(-576, -324)
 signal end
 
 func _ready(): #To begin, stack three sections.
+	$music.volume_db = Global.volume_db
 	
 	sectionNodes.append($startSection)
 	sectionNodes.append(place_section(sectionNodes[0].next_pos))

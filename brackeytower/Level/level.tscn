@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1p4ymvljf843"]
+[gd_scene load_steps=16 format=3 uid="uid://c1p4ymvljf843"]
 
 [ext_resource type="PackedScene" uid="uid://cpavncrwwvunr" path="res://Player/player.tscn" id="1_0n6wn"]
 [ext_resource type="Script" path="res://Level/level.gd" id="1_uctxv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bhd0web2b3h37" path="res://Level/lighthouse.png" id="5_hu0cw"]
 [ext_resource type="Texture2D" uid="uid://cqk4fjaj7ibbw" path="res://Level/cloudTest.png" id="5_onr6u"]
 [ext_resource type="PackedScene" uid="uid://demcalvxcshjq" path="res://Level/sections/section_start.tscn" id="6_2jsp5"]
+[ext_resource type="AudioStream" uid="uid://uievrkhn2b47" path="res://sounds/sea tower demo 02.ogg" id="8_px746"]
 
 [sub_resource type="Animation" id="Animation_i58lc"]
 length = 0.001
@@ -322,11 +323,13 @@ motion_scale = Vector2(0, 0)
 metadata/_edit_lock_ = true
 
 [node name="cloudLeft" type="Sprite2D" parent="Background/rearLayer"]
+z_as_relative = false
 position = Vector2(-80, 8)
 texture = ExtResource("5_onr6u")
 metadata/_edit_lock_ = true
 
 [node name="cloudRight" type="Sprite2D" parent="Background/rearLayer"]
+z_as_relative = false
 position = Vector2(1440, 18)
 texture = ExtResource("5_onr6u")
 metadata/_edit_lock_ = true
@@ -342,6 +345,11 @@ z_index = -1
 position = Vector2(160, 90)
 texture = SubResource("AtlasTexture_s0dfh")
 
+[node name="music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_px746")
+autoplay = true
+
 [connection signal="offscreen" from="startSection" to="." method="_on_section_offscreen"]
 [connection signal="moved" from="player" to="." method="_on_player_moved"]
 [connection signal="body_shape_entered" from="water" to="." method="_on_water_entered"]
+[connection signal="finished" from="music" to="music" method="play"]
