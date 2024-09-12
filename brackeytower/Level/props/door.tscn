@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://dur7nx6n5ftsn"]
+[gd_scene load_steps=16 format=3 uid="uid://dur7nx6n5ftsn"]
 
 [ext_resource type="Script" path="res://Level/props/door.gd" id="1_fnvfa"]
 [ext_resource type="Texture2D" uid="uid://bvfpu1m0c4da0" path="res://Level/props/door.png" id="2_uuuxd"]
+[ext_resource type="AudioStream" uid="uid://d3jhbbqboepbr" path="res://Level/props/sea tower sfx - door open.wav" id="3_axapg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2r05x"]
 size = Vector2(8, 16)
@@ -96,5 +97,8 @@ shape = SubResource("RectangleShape2D_2r05x")
 position = Vector2(0, -4)
 sprite_frames = SubResource("SpriteFrames_gasbq")
 animation = &"open"
+
+[node name="sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_axapg")
 
 [connection signal="animation_finished" from="sprite" to="." method="_on_animation_finished"]
