@@ -9,9 +9,10 @@ var sectionScenes = [preload("res://Level/sections/section_1.tscn"),
 	preload("res://Level/sections/section_3.tscn")
 ]
 
-var sectionNodes:Array = []
+var doubleJumpSection = preload("res://Level/sections/dJump_section.tscn")
 
-var lastSection
+var sectionNodes:Array = []
+var sectionsPlaced:int = 0
 
 const UIOffset = Vector2(-576, -324)
 
@@ -39,10 +40,15 @@ func _physics_process(delta):
 		$water.position.y = $player.position.y + maxPlayerLead
 
 func place_section(pos): #The position determines the bottom center of the section.
-	var node = sectionScenes.pick_random().instantiate()
+	var node = null
+	
+	match sectionsPlaced: #Determines what section is assigned to node.
+		5: node = doubleJumpSection.instantiate()
+		_: node = sectionScenes.pick_random().instantiate()
 	add_child(node)
 	node.position = pos
 	node.offscreen.connect(_on_section_offscreen)
+	sectionsPlaced += 1
 	return node
 
 func _on_section_offscreen(node):

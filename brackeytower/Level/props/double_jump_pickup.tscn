@@ -1,0 +1,106 @@
+[gd_scene load_steps=15 format=3 uid="uid://cpotb6hao00g7"]
+
+[ext_resource type="Script" path="res://Level/props/pickup.gd" id="1_dhvt2"]
+[ext_resource type="Texture2D" uid="uid://lv8dxtyvj6mg" path="res://icon.svg" id="2_qxc1h"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ss2ln"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yy2rd"]
+atlas = ExtResource("2_qxc1h")
+region = Rect2(80, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_27en5"]
+atlas = ExtResource("2_qxc1h")
+region = Rect2(40, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbm82"]
+atlas = ExtResource("2_qxc1h")
+region = Rect2(40, 56, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7m0e"]
+atlas = ExtResource("2_qxc1h")
+region = Rect2(32, 56, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yng82"]
+atlas = ExtResource("2_qxc1h")
+region = Rect2(32, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fp6x"]
+atlas = ExtResource("2_qxc1h")
+region = Rect2(32, 72, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a31mv"]
+atlas = ExtResource("2_qxc1h")
+region = Rect2(40, 72, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvb6n"]
+atlas = ExtResource("2_qxc1h")
+region = Rect2(48, 72, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojyrt"]
+atlas = ExtResource("2_qxc1h")
+region = Rect2(48, 64, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_duort"]
+atlas = ExtResource("2_qxc1h")
+region = Rect2(48, 56, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xp03d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yy2rd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_27en5")
+}],
+"loop": true,
+"name": &"hover",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbm82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k7m0e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yng82")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fp6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a31mv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvb6n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojyrt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_duort")
+}],
+"loop": false,
+"name": &"pickup",
+"speed": 5.0
+}]
+
+[node name="doubleJumpPickup" type="Area2D"]
+collision_layer = 16
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_dhvt2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ss2ln")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xp03d")
+animation = &"pickup"
+
+[connection signal="body_shape_entered" from="." to="." method="grabbed" unbinds=4]
+[connection signal="animation_finished" from="sprite" to="." method="_on_animation_finished"]

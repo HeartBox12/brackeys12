@@ -31,6 +31,8 @@ func _ready():
 	
 	for node in $Audio.get_children():
 		node.volume_db = Global.volume_db
+	
+	Global.gotDoubleJump.connect(_on_got_double_jump)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -64,3 +66,6 @@ func is_on_right_wall():
 
 func is_on_left_wall():
 	return $leftWallRay.is_colliding()
+
+func _on_got_double_jump():
+	hasDoubleJump = true

@@ -283,7 +283,7 @@ machine = NodePath("..")
 sprite = NodePath("../../sprite")
 cooldown = NodePath("../../wallCooldown")
 
-[node name="wall_right" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown")]
+[node name="wall_right" type="Node" parent="State Machine" node_paths=PackedStringArray("host", "machine", "sprite", "cooldown", "jumpSound")]
 script = ExtResource("9_nssb4")
 host = NodePath("../..")
 machine = NodePath("..")

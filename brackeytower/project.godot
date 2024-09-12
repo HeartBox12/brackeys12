@@ -56,6 +56,7 @@ jump={
 2d_physics/layer_2="player"
 2d_physics/layer_3="water"
 2d_physics/layer_4="buttons"
+2d_physics/layer_5="pickups"
 
 [rendering]
 
