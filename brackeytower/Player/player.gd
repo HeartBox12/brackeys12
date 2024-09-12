@@ -9,14 +9,7 @@ extends Node2D
 @export var flyForce:int #How effective holding up is when jumping upwards
 
 @export var hasDoubleJump:bool = false
-
-var stepSounds = [preload("res://sounds/sea tower sfx - footstep a.wav"),
-preload("res://sounds/sea tower sfx - footstep b.wav"),
-preload("res://sounds/sea tower sfx - foostep c.wav"),
-preload("res://sounds/sea tower sfx - footstep d.wav")]
-var jumpSound = preload("res://sounds/sea tower sfx - jump.wav")
-var landSound = preload("res://sounds/sea tower sfx - land.wav")
-var dJumpSound = preload("res://sounds/sea tower sfx - double jump.wav")
+@export var hasWallJump:bool = false
 
 var input:float #Unit vector representing player movement dir
 var faceRight = false
@@ -33,6 +26,7 @@ func _ready():
 		node.volume_db = Global.volume_db
 	
 	Global.gotDoubleJump.connect(_on_got_double_jump)
+	Global.gotWallJump.connect(_on_got_wall_jump)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -69,3 +63,6 @@ func is_on_left_wall():
 
 func _on_got_double_jump():
 	hasDoubleJump = true
+
+func _on_got_wall_jump():
+	hasWallJump = true

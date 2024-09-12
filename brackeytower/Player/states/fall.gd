@@ -31,12 +31,12 @@ func physics_update(delta): #Equivalent to func physics_process() in the host.
 			swap.emit(self, "walk")
 			return
 	
-	if host.is_on_right_wall() and cooldown.is_stopped() and host.input > 0:
+	if host.is_on_right_wall() and cooldown.is_stopped() and host.input > 0 and host.hasWallJump:
 		host.faceRight = false
 		swap.emit(self, "wall_left")
 		return
 		
-	if host.is_on_left_wall() and cooldown.is_stopped() and host.input < 0:
+	if host.is_on_left_wall() and cooldown.is_stopped() and host.input < 0 and host.hasWallJump:
 		host.faceRight = true
 		swap.emit(self, "wall_right")
 		return

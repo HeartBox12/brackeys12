@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c1p4ymvljf843"]
+[gd_scene load_steps=20 format=3 uid="uid://c1p4ymvljf843"]
 
 [ext_resource type="PackedScene" uid="uid://cpavncrwwvunr" path="res://Player/player.tscn" id="1_0n6wn"]
 [ext_resource type="Script" path="res://Level/level.gd" id="1_uctxv"]
@@ -10,6 +10,32 @@
 [ext_resource type="PackedScene" uid="uid://demcalvxcshjq" path="res://Level/sections/section_start.tscn" id="6_2jsp5"]
 [ext_resource type="FontFile" uid="uid://gjrf5bn6647t" path="res://Menu/citizen_slab_personal.otf" id="6_5qba0"]
 [ext_resource type="AudioStream" uid="uid://uievrkhn2b47" path="res://sounds/sea tower demo 02.ogg" id="8_px746"]
+
+[sub_resource type="Animation" id="Animation_8aaha"]
+resource_name = "DoubleJump"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Canvas/Control/DoubleJumpPanel:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-288, -0.25, 0, 0.25, 0, 32, -0.25, 0, 0.25, 0, 32, -0.25, 0, 0.25, 0, 352, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Canvas/Control/DoubleJumpPanel:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0, 35, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
 
 [sub_resource type="Animation" id="Animation_i58lc"]
 length = 0.001
@@ -100,7 +126,7 @@ tracks/6/keys = {
 tracks/7/type = "bezier"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Canvas/Control/NinePatchRect:position:x")
+tracks/7/path = NodePath("Canvas/Control/DoubleJumpPanel:position:x")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -111,10 +137,32 @@ tracks/7/keys = {
 tracks/8/type = "bezier"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Canvas/Control/NinePatchRect:position:y")
+tracks/8/path = NodePath("Canvas/Control/DoubleJumpPanel:position:y")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Canvas/Control/WallJumpPanel:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-288, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Canvas/Control/WallJumpPanel:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(35, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
@@ -224,13 +272,13 @@ tracks/4/keys = {
 "values": [Color(0.156863, 0.611765, 0.956863, 1), Color(0.2881, 0.36851, 0.43, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_8aaha"]
-resource_name = "DoubleJump"
+[sub_resource type="Animation" id="Animation_qtiur"]
+resource_name = "WallJump"
 length = 2.0
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Canvas/Control/NinePatchRect:position:x")
+tracks/0/path = NodePath("Canvas/Control/WallJumpPanel:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -241,7 +289,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Canvas/Control/NinePatchRect:position:y")
+tracks/1/path = NodePath("Canvas/Control/WallJumpPanel:position:y")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -254,6 +302,7 @@ tracks/1/keys = {
 _data = {
 "DoubleJump": SubResource("Animation_8aaha"),
 "RESET": SubResource("Animation_i58lc"),
+"WallJump": SubResource("Animation_qtiur"),
 "loss": SubResource("Animation_tjwcv"),
 "start": SubResource("Animation_e0u25")
 }
@@ -326,7 +375,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Canvas/Control"]
+[node name="DoubleJumpPanel" type="NinePatchRect" parent="Canvas/Control"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 1
 anchors_preset = -1
@@ -349,7 +398,7 @@ patch_margin_bottom = 4
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Label" type="Label" parent="Canvas/Control/NinePatchRect"]
+[node name="Label" type="Label" parent="Canvas/Control/DoubleJumpPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -366,6 +415,48 @@ text = "Double Jump Acquired"
 label_settings = SubResource("LabelSettings_aunud")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="WallJumpPanel" type="NinePatchRect" parent="Canvas/Control"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.25
+anchor_right = 0.9
+anchor_bottom = 0.25
+offset_left = -320.0
+offset_top = -10.0
+offset_right = -320.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_buswt")
+region_rect = Rect2(1, 1, 22, 22)
+patch_margin_left = 5
+patch_margin_top = 4
+patch_margin_right = 5
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Label" type="Label" parent="Canvas/Control/WallJumpPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Wall Jump Acquired"
+label_settings = SubResource("LabelSettings_aunud")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="Background" type="ParallaxBackground" parent="."]
 

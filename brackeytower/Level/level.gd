@@ -10,6 +10,7 @@ var sectionScenes = [preload("res://Level/sections/section_1.tscn"),
 ]
 
 var doubleJumpSection = preload("res://Level/sections/dJump_section.tscn")
+var wallJumpSection = preload("res://Level/sections/wJump_section.tscn")
 
 var sectionNodes:Array = []
 var sectionsPlaced:int = 0
@@ -19,6 +20,7 @@ signal end
 func _ready(): #To begin, stack three sections.
 	$music.volume_db = Global.volume_db
 	Global.gotDoubleJump.connect(_on_double_jump_get)
+	Global.gotWallJump.connect(_on_wall_jump_get)
 	
 	sectionNodes.append($startSection)
 	sectionNodes.append(place_section(sectionNodes[0].next_pos))
@@ -46,6 +48,7 @@ func place_section(pos): #The position determines the bottom center of the secti
 	
 	match sectionsPlaced: #Determines what section is assigned to node.
 		1: node = doubleJumpSection.instantiate()
+		2: node = wallJumpSection.instantiate()
 		_: node = sectionScenes.pick_random().instantiate()
 	add_child(node)
 	node.position = pos
@@ -69,3 +72,6 @@ func _on_player_moved():
 
 func _on_double_jump_get():
 	$Anims.play("DoubleJump")
+
+func _on_wall_jump_get():
+	$Anims.play("WallJump")
