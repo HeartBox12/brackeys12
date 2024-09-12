@@ -14,12 +14,11 @@ var doubleJumpSection = preload("res://Level/sections/dJump_section.tscn")
 var sectionNodes:Array = []
 var sectionsPlaced:int = 0
 
-const UIOffset = Vector2(-576, -324)
-
 signal end
 
 func _ready(): #To begin, stack three sections.
 	$music.volume_db = Global.volume_db
+	Global.gotDoubleJump.connect(_on_double_jump_get)
 	
 	sectionNodes.append($startSection)
 	sectionNodes.append(place_section(sectionNodes[0].next_pos))
@@ -28,13 +27,15 @@ func _ready(): #To begin, stack three sections.
 	$camera.position_smoothing_enabled = false
 	$camera.position.y = $player.position.y
 	$camera.position_smoothing_enabled = true
+	
+	$Canvas/Control.position = Vector2(0, 0) #Somehow starts the game somewhere else. I don't know why
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if notLost:
 		$camera.position.y = $player.position.y
-	$Loss.set_position($camera.get_target_position() + UIOffset)
-
+	
 func _physics_process(delta):
 	$water.position.y -= waterSpeed * delta
 	if $water.position.y - $player.position.y > maxPlayerLead:
@@ -44,7 +45,7 @@ func place_section(pos): #The position determines the bottom center of the secti
 	var node = null
 	
 	match sectionsPlaced: #Determines what section is assigned to node.
-		5: node = doubleJumpSection.instantiate()
+		1: node = doubleJumpSection.instantiate()
 		_: node = sectionScenes.pick_random().instantiate()
 	add_child(node)
 	node.position = pos
@@ -65,3 +66,6 @@ func main_menu():
 
 func _on_player_moved():
 	$Anims.play("start")
+
+func _on_double_jump_get():
+	$Anims.play("DoubleJump")

@@ -1,12 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1p4ymvljf843"]
+[gd_scene load_steps=19 format=3 uid="uid://c1p4ymvljf843"]
 
 [ext_resource type="PackedScene" uid="uid://cpavncrwwvunr" path="res://Player/player.tscn" id="1_0n6wn"]
 [ext_resource type="Script" path="res://Level/level.gd" id="1_uctxv"]
 [ext_resource type="PackedScene" uid="uid://dcujp3n70di0" path="res://Level/water.tscn" id="3_khv00"]
+[ext_resource type="Texture2D" uid="uid://dgosn2lwshy2m" path="res://Level/UI/LvlPanel.png" id="5_buswt"]
 [ext_resource type="Texture2D" uid="uid://dv2h6fts4a2ci" path="res://Level/fullRain.tres" id="5_eesrd"]
 [ext_resource type="Texture2D" uid="uid://bhd0web2b3h37" path="res://Level/lighthouse.png" id="5_hu0cw"]
 [ext_resource type="Texture2D" uid="uid://cqk4fjaj7ibbw" path="res://Level/cloudTest.png" id="5_onr6u"]
 [ext_resource type="PackedScene" uid="uid://demcalvxcshjq" path="res://Level/sections/section_start.tscn" id="6_2jsp5"]
+[ext_resource type="FontFile" uid="uid://gjrf5bn6647t" path="res://Menu/citizen_slab_personal.otf" id="6_5qba0"]
 [ext_resource type="AudioStream" uid="uid://uievrkhn2b47" path="res://sounds/sea tower demo 02.ogg" id="8_px746"]
 
 [sub_resource type="Animation" id="Animation_i58lc"]
@@ -26,74 +28,96 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Loss:visible")
+tracks/1/path = NodePath("Background/rearLayer/cloudLeft:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector2(-80, 8)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Background/rearLayer/cloudLeft:position")
+tracks/2/path = NodePath("Background/rearLayer/cloudRight:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-80, 8)]
+"values": [Vector2(1440, 18)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Background/rearLayer/cloudRight:position")
+tracks/3/path = NodePath(".:waterSpeed")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1440, 18)]
+"update": 1,
+"values": [0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:waterSpeed")
+tracks/4/path = NodePath("Background/rearLayer/Sky:color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Color(0.156863, 0.611765, 0.956863, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Background/rearLayer/ColorRect:color")
+tracks/5/path = NodePath(".:notLost")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.156863, 0.611765, 0.956863, 1)]
+"update": 1,
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath(".:notLost")
+tracks/6/path = NodePath("Canvas/Control/DeathRect:size")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(320, 0)]
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Canvas/Control/NinePatchRect:position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-288, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Canvas/Control/NinePatchRect:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_tjwcv"]
@@ -115,26 +139,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Loss:visible")
+tracks/1/path = NodePath(".:notLost")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:notLost")
+tracks/2/path = NodePath("Canvas/Control/DeathRect:size")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 5),
+"update": 0,
+"values": [Vector2(320, 0), Vector2(320, 180)]
 }
 
 [sub_resource type="Animation" id="Animation_e0u25"]
@@ -154,74 +178,89 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Loss:visible")
+tracks/1/path = NodePath("Background/rearLayer/cloudLeft:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-80, 8), Vector2(80, 8)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Background/rearLayer/cloudLeft:position")
+tracks/2/path = NodePath("Background/rearLayer/cloudRight:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-80, 8), Vector2(80, 8)]
+"values": [Vector2(400, 8), Vector2(240, 8)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Background/rearLayer/cloudRight:position")
+tracks/3/path = NodePath(".:waterSpeed")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(400, 8), Vector2(240, 8)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:waterSpeed")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [10]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Background/rearLayer/ColorRect:color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Background/rearLayer/Sky:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.156863, 0.611765, 0.956863, 1), Color(0.2881, 0.36851, 0.43, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_8aaha"]
+resource_name = "DoubleJump"
+length = 2.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Canvas/Control/NinePatchRect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(-288, -0.25, 0, 0.25, 0, 32, -0.25, 0, 0.25, 0, 32, -0.25, 0, 0.25, 0, 352, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Canvas/Control/NinePatchRect:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(35, -0.25, 0, 0.25, 0, 35, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2)
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p0iws"]
 _data = {
+"DoubleJump": SubResource("Animation_8aaha"),
 "RESET": SubResource("Animation_i58lc"),
 "loss": SubResource("Animation_tjwcv"),
 "start": SubResource("Animation_e0u25")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_w6vld"]
-font_size = 32
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_aunud"]
+font = ExtResource("6_5qba0")
+font_size = 12
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fn868"]
 atlas = ExtResource("5_hu0cw")
@@ -256,10 +295,11 @@ libraries = {
 "": SubResource("AnimationLibrary_p0iws")
 }
 
-[node name="Loss" type="Control" parent="."]
-visible = false
+[node name="Canvas" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="Canvas"]
 top_level = true
-z_index = 2
+z_index = 4
 layout_direction = 1
 layout_mode = 3
 anchors_preset = 8
@@ -267,15 +307,49 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -576.0
-offset_top = -324.0
-offset_right = 576.0
-offset_bottom = 324.0
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -320.0
+offset_bottom = -180.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="Label" type="Label" parent="Loss"]
+[node name="DeathRect" type="ColorRect" parent="Canvas/Control"]
+z_index = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -180.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Canvas/Control"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.25
+anchor_right = 0.9
+anchor_bottom = 0.25
+offset_left = -320.0
+offset_top = -10.0
+offset_right = -320.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_buswt")
+region_rect = Rect2(1, 1, 22, 22)
+patch_margin_left = 5
+patch_margin_top = 4
+patch_margin_right = 5
+patch_margin_bottom = 4
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Label" type="Label" parent="Canvas/Control/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -288,9 +362,10 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "YOU LOSE"
-label_settings = SubResource("LabelSettings_w6vld")
-metadata/_edit_lock_ = true
+text = "Double Jump Acquired"
+label_settings = SubResource("LabelSettings_aunud")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Background" type="ParallaxBackground" parent="."]
 
@@ -334,7 +409,7 @@ position = Vector2(1440, 18)
 texture = ExtResource("5_onr6u")
 metadata/_edit_lock_ = true
 
-[node name="ColorRect" type="ColorRect" parent="Background/rearLayer"]
+[node name="Sky" type="ColorRect" parent="Background/rearLayer"]
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.156863, 0.611765, 0.956863, 1)
@@ -345,7 +420,7 @@ z_index = -1
 position = Vector2(160, 90)
 texture = SubResource("AtlasTexture_s0dfh")
 
-[node name="music" type="AudioStreamPlayer2D" parent="."]
+[node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_px746")
 autoplay = true
 

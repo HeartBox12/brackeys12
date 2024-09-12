@@ -95,4 +95,4 @@ shape = SubResource("RectangleShape2D_j6yic")
 position = Vector2(0, 68)
 sprite_frames = SubResource("SpriteFrames_8tllu")
 autoplay = "default"
-frame_progress = 0.692421
+frame_progress = 0.740305
