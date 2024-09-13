@@ -47,8 +47,8 @@ func place_section(pos): #The position determines the bottom center of the secti
 	var node = null
 	
 	match sectionsPlaced: #Determines what section is assigned to node.
-		1: node = doubleJumpSection.instantiate()
-		2: node = wallJumpSection.instantiate()
+		5: node = doubleJumpSection.instantiate()
+		10: node = wallJumpSection.instantiate()
 		_: node = sectionScenes.pick_random().instantiate()
 	add_child(node)
 	node.position = pos
