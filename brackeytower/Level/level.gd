@@ -18,8 +18,6 @@ var sectionsPlaced:int = 0
 signal end
 
 func _ready(): #To begin, stack three sections.
-	$music.volume_db = Global.volume_db
-	$water/roar.volume_db = Global.volume_db
 	
 	Global.gotDoubleJump.connect(_on_double_jump_get)
 	Global.gotWallJump.connect(_on_wall_jump_get)
@@ -49,8 +47,8 @@ func place_section(pos): #The position determines the bottom center of the secti
 	var node = null
 	
 	match sectionsPlaced: #Determines what section is assigned to node.
-		5: node = doubleJumpSection.instantiate()
-		10: node = wallJumpSection.instantiate()
+		1: node = doubleJumpSection.instantiate()
+		2: node = wallJumpSection.instantiate()
 		_: node = sectionScenes.pick_random().instantiate()
 	add_child(node)
 	node.position = pos

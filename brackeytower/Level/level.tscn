@@ -337,6 +337,7 @@ z_index = 1
 position = Vector2(158, 168)
 
 [node name="listener" type="AudioListener2D" parent="player"]
+current = true
 
 [node name="water" parent="." instance=ExtResource("3_khv00")]
 z_index = 1

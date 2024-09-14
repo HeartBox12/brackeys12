@@ -1,8 +1,5 @@
 extends StaticBody2D
 
-func _ready():
-	$sound.volume_db = Global.volume_db
-
 func open():
 	$sprite.play("open")
 	$sound.play()

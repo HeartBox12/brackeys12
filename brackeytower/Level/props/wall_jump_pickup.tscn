@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://ch0vvhu6248a3"]
+[gd_scene load_steps=29 format=3 uid="uid://ch0vvhu6248a3"]
 
 [ext_resource type="Script" path="res://Level/props/wall_jump_pickup.gd" id="1_n5ol0"]
 [ext_resource type="Texture2D" uid="uid://xa77md1n8ddl" path="res://Level/props/JumpFairy.png" id="2_tvwqd"]
 [ext_resource type="Texture2D" uid="uid://cksi61es5oxoy" path="res://Level/props/FairyFade.png" id="3_ddlcl"]
+[ext_resource type="AudioStream" uid="uid://87ahu8stitoe" path="res://sounds/sea tower sfx - pickup.wav" id="4_14ohw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ss2ln"]
 radius = 8.0
@@ -189,5 +190,9 @@ animation = &"hover"
 autoplay = "hover"
 frame_progress = 0.111484
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_14ohw")
+
 [connection signal="body_shape_entered" from="." to="." method="grabbed" unbinds=4]
+[connection signal="body_shape_entered" from="." to="AudioStreamPlayer" method="play" flags=6 unbinds=4]
 [connection signal="animation_finished" from="sprite" to="." method="_on_animation_finished"]

@@ -22,9 +22,6 @@ signal turnaround
 func _ready():
 	$"State Machine/idle".swap.connect(_on_first_swap)
 	
-	for node in $Audio.get_children():
-		node.volume_db = Global.volume_db
-	
 	Global.gotDoubleJump.connect(_on_got_double_jump)
 	Global.gotWallJump.connect(_on_got_wall_jump)
 

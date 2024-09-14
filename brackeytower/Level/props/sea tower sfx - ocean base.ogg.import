@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://htie8npo6ilv"
+path="res://.godot/imported/sea tower sfx - ocean base.ogg-bc6def98681ce0c5b89c105cc3620506.oggvorbisstr"
+
+[deps]
+
+source_file="res://Level/props/sea tower sfx - ocean base.ogg"
+dest_files=["res://.godot/imported/sea tower sfx - ocean base.ogg-bc6def98681ce0c5b89c105cc3620506.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
