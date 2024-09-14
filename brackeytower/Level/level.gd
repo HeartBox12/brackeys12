@@ -19,6 +19,8 @@ signal end
 
 func _ready(): #To begin, stack three sections.
 	$music.volume_db = Global.volume_db
+	$water/roar.volume_db = Global.volume_db
+	
 	Global.gotDoubleJump.connect(_on_double_jump_get)
 	Global.gotWallJump.connect(_on_wall_jump_get)
 	
