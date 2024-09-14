@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=4 uid="uid://cj80o6j5kh0c2"]
+
+[ext_resource type="Script" path="res://Level/sections/section.gd" id="1_8ckd0"]
+[ext_resource type="TileSet" uid="uid://dh5umrf15i87n" path="res://Level/sections/tiles.tres" id="2_xwe2x"]
+
+[node name="Section1" type="Node2D"]
+script = ExtResource("1_8ckd0")
+
+[node name="nextSpot" type="Marker2D" parent="."]
+position = Vector2(0, -144)
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD/////AAABAAAAAAAAAP//AAABAAAAAAD7////AAABAAAAAAD8////AAABAAAAAAD9////AAABAAAAAAD+////AAABAAAAAAABAP//AAABAAAAAAACAP//AAABAAAAAAADAP//AAABAAAAAAAEAP//AAABAAAAAAAFAP//AAACAAEAAAD6////AAABAAIAAAD5//r/AAAAAAAAAAD4//r/AAAAAAAAAAD3//r/AAAAAAAAAAD2//r/AAAAAAAAAAD1//r/AAAAAAAAAAD0//r/AAAAAAAAAADz//r/AAAAAAAAAADy//r/AAAAAAAAAADx//r/AAAAAAIAAAD6//r/AAABAAEAAAAFAPb/AAAAAAAAAAAGAPb/AAAAAAAAAAAHAPb/AAAAAAAAAAAIAPb/AAAAAAAAAAAJAPb/AAAAAAAAAAAKAPb/AAAAAAAAAAALAPb/AAAAAAAAAAAMAPb/AAAAAAAAAAANAPb/AAAAAAAAAAAOAPb/AAABAAEAAAAEAPb/AAAAAAIAAAA=")
+tile_set = ExtResource("2_xwe2x")
+
+[node name="OnScreenChecker" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.14739e-05, -68)
+scale = Vector2(12.8, 7.6)
+
+[connection signal="screen_entered" from="OnScreenChecker" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="OnScreenChecker" to="." method="_on_screen_exited"]

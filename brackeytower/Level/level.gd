@@ -3,11 +3,23 @@ extends Node2D
 @export var waterSpeed:int = 0
 @export var notLost:bool = true
 @export var maxPlayerLead:int
+@export var waterAccel:int
+@export var accelCutoff:int
 
 var sectionScenes = [preload("res://Level/sections/section_1.tscn"),
 	preload("res://Level/sections/section_2.tscn"),
-	preload("res://Level/sections/section_3.tscn")
+	preload("res://Level/sections/section_3.tscn"),
+	preload("res://Level/sections/section_4.tscn")
 ]
+
+#The sections added to the pool after the double-jump pickup
+var dSectionScenes = [preload("res://Level/sections/section_d1.tscn"),
+preload("res://Level/sections/section_d2.tscn"),
+preload("res://Level/sections/section_d3.tscn")]
+
+#Sections added to the pool after the wall-jump pickup
+var wSectionScenes = [preload("res://Level/sections/section_w1.tscn"),
+preload("res://Level/sections/section_w2.tscn")]
 
 var doubleJumpSection = preload("res://Level/sections/dJump_section.tscn")
 var wallJumpSection = preload("res://Level/sections/wJump_section.tscn")
@@ -47,9 +59,18 @@ func place_section(pos): #The position determines the bottom center of the secti
 	var node = null
 	
 	match sectionsPlaced: #Determines what section is assigned to node.
-		1: node = doubleJumpSection.instantiate()
-		2: node = wallJumpSection.instantiate()
-		_: node = sectionScenes.pick_random().instantiate()
+		3:
+			node = doubleJumpSection.instantiate()
+			sectionScenes.append_array(dSectionScenes)
+		5:
+			node = wallJumpSection.instantiate()
+			sectionScenes.append_array(wSectionScenes)
+		accelCutoff:
+			waterAccel = 0
+			node = sectionScenes.pick_random().instantiate()
+		_:
+			node = sectionScenes.pick_random().instantiate()
+			waterSpeed += waterAccel
 	add_child(node)
 	node.position = pos
 	node.offscreen.connect(_on_section_offscreen)
