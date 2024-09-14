@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1p4ymvljf843"]
+[gd_scene load_steps=30 format=3 uid="uid://c1p4ymvljf843"]
 
 [ext_resource type="PackedScene" uid="uid://cpavncrwwvunr" path="res://Player/player.tscn" id="1_0n6wn"]
 [ext_resource type="Script" path="res://Level/level.gd" id="1_uctxv"]
@@ -6,11 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dgosn2lwshy2m" path="res://Level/UI/LvlPanel.png" id="5_buswt"]
 [ext_resource type="Texture2D" uid="uid://dv2h6fts4a2ci" path="res://Level/fullRain.tres" id="5_eesrd"]
 [ext_resource type="Texture2D" uid="uid://bhd0web2b3h37" path="res://Level/lighthouse.png" id="5_hu0cw"]
-[ext_resource type="Texture2D" uid="uid://cqk4fjaj7ibbw" path="res://Level/cloudTest.png" id="5_onr6u"]
 [ext_resource type="AudioStream" uid="uid://cfbcvjehkkgq8" path="res://sounds/sea tower sfx - ocean roar.ogg" id="5_rvhjm"]
 [ext_resource type="PackedScene" uid="uid://demcalvxcshjq" path="res://Level/sections/section_start.tscn" id="6_2jsp5"]
 [ext_resource type="FontFile" uid="uid://gjrf5bn6647t" path="res://Menu/citizen_slab_personal.otf" id="6_5qba0"]
 [ext_resource type="AudioStream" uid="uid://uievrkhn2b47" path="res://sounds/sea tower demo 02.ogg" id="8_px746"]
+[ext_resource type="Texture2D" uid="uid://djriamdytudf1" path="res://Level/props/CloudRight.png" id="10_flmu4"]
+[ext_resource type="Texture2D" uid="uid://bqkxm5p21ck0x" path="res://Level/props/CloudLeft.png" id="11_2y7kb"]
 
 [sub_resource type="Animation" id="Animation_8aaha"]
 resource_name = "DoubleJump"
@@ -168,6 +169,18 @@ tracks/10/keys = {
 "points": PackedFloat32Array(35, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("music:volume_db")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_qtiur"]
 resource_name = "WallJump"
@@ -235,9 +248,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(320, 0), Vector2(320, 180)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("music:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -60.0]
+}
 
 [sub_resource type="Animation" id="Animation_e0u25"]
 resource_name = "start"
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -245,7 +271,7 @@ tracks/0/path = NodePath("Background/rainLayer:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(3, 3.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -257,10 +283,10 @@ tracks/1/path = NodePath("Background/rearLayer/cloudLeft:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2.53333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-80, 8), Vector2(80, 8)]
+"values": [Vector2(-80, 8), Vector2(64, 8)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -269,10 +295,10 @@ tracks/2/path = NodePath("Background/rearLayer/cloudRight:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2.53333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(400, 8), Vector2(240, 8)]
+"values": [Vector2(400, 8), Vector2(256, 8)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -281,10 +307,10 @@ tracks/3/path = NodePath(".:waterSpeed")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(3, 3.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [10]
+"values": [30, 10]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -293,10 +319,24 @@ tracks/4/path = NodePath("Background/rearLayer/Sky:color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1.93333, 2.85, 3, 3.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.156863, 0.611765, 0.956863, 1), Color(0.2881, 0.36851, 0.43, 1)]
+"values": [Color(0.156863, 0.611765, 0.956863, 1), Color(0.2881, 0.36851, 0.43, 1), Color(0.286275, 0.368627, 0.431373, 1), Color(1, 1, 1, 1), Color(0.286275, 0.368627, 0.431373, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("music")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p0iws"]
@@ -315,6 +355,64 @@ font_size = 12
 [sub_resource type="AtlasTexture" id="AtlasTexture_fn868"]
 atlas = ExtResource("5_hu0cw")
 region = Rect2(0, 0, 320, 361)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rsm5m"]
+atlas = ExtResource("10_flmu4")
+region = Rect2(0, 0, 128, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00b2p"]
+atlas = ExtResource("10_flmu4")
+region = Rect2(0, 16, 128, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r5y2s"]
+atlas = ExtResource("10_flmu4")
+region = Rect2(0, 32, 128, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ut4jd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rsm5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00b2p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r5y2s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3qoue"]
+atlas = ExtResource("11_2y7kb")
+region = Rect2(0, 0, 128, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0aru"]
+atlas = ExtResource("11_2y7kb")
+region = Rect2(0, 16, 128, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_annep"]
+atlas = ExtResource("11_2y7kb")
+region = Rect2(0, 32, 128, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u3sfk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3qoue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0aru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_annep")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0dfh"]
 atlas = ExtResource("5_hu0cw")
@@ -499,17 +597,19 @@ z_index = -1
 motion_scale = Vector2(0, 0)
 metadata/_edit_lock_ = true
 
-[node name="cloudLeft" type="Sprite2D" parent="Background/rearLayer"]
+[node name="cloudLeft" type="AnimatedSprite2D" parent="Background/rearLayer"]
 z_as_relative = false
 position = Vector2(-80, 8)
-texture = ExtResource("5_onr6u")
-metadata/_edit_lock_ = true
+sprite_frames = SubResource("SpriteFrames_ut4jd")
+autoplay = "default"
 
-[node name="cloudRight" type="Sprite2D" parent="Background/rearLayer"]
+[node name="cloudRight" type="AnimatedSprite2D" parent="Background/rearLayer"]
 z_as_relative = false
 position = Vector2(1440, 18)
-texture = ExtResource("5_onr6u")
-metadata/_edit_lock_ = true
+sprite_frames = SubResource("SpriteFrames_u3sfk")
+autoplay = "default"
+frame = 1
+frame_progress = 0.874818
 
 [node name="Sky" type="ColorRect" parent="Background/rearLayer"]
 offset_right = 1152.0
@@ -524,7 +624,6 @@ texture = SubResource("AtlasTexture_s0dfh")
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_px746")
-autoplay = true
 
 [connection signal="offscreen" from="startSection" to="." method="_on_section_offscreen"]
 [connection signal="moved" from="player" to="." method="_on_player_moved"]

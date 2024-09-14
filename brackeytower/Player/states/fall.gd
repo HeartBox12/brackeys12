@@ -4,6 +4,7 @@ extends State
 @export var sprite:Node
 @export var cooldown:Node
 @export var landSound:Node
+@export var jumpSound:Node
 
 var playerPos
 
@@ -43,6 +44,7 @@ func physics_update(delta): #Equivalent to func physics_process() in the host.
 	
 	if Input.is_action_just_pressed("jump") and host.hasDoubleJump:
 		host.velocity.y = -host.jumpForce
+		jumpSound.play()
 		swap.emit(self, "d-air")
 		return
 	
