@@ -61,10 +61,10 @@ func place_section(pos): #The position determines the bottom center of the secti
 	var node = null
 	
 	match sectionsPlaced: #Determines what section is assigned to node.
-		3:
+		4:
 			node = doubleJumpSection.instantiate()
 			sectionScenes.append_array(dSectionScenes)
-		5:
+		9:
 			node = wallJumpSection.instantiate()
 			sectionScenes.append_array(wSectionScenes)
 		accelCutoff:

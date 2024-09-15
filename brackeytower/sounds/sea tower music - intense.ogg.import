@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dt5r6tqacmkrj"
+path="res://.godot/imported/sea tower music - intense.ogg-ececde4b6445b4ff39a8beb32398cccd.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/sea tower music - intense.ogg"
+dest_files=["res://.godot/imported/sea tower music - intense.ogg-ececde4b6445b4ff39a8beb32398cccd.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

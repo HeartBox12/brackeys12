@@ -175,7 +175,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("music:volume_db")
+tracks/11/path = NodePath("musicCalm:volume_db")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -244,10 +244,35 @@ tracks/16/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("player:process_mode")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("musicIntense:volume_db")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_qtiur"]
 resource_name = "WallJump"
 length = 2.0
+step = 0.1
 tracks/0/type = "bezier"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -269,6 +294,30 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(0, 0),
 "points": PackedFloat32Array(35, -0.25, 0, 0.25, 0, 35, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 2)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("musicCalm:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -60.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("musicIntense:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-60.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_tjwcv"]
@@ -315,7 +364,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("music:volume_db")
+tracks/3/path = NodePath("musicCalm:volume_db")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -323,6 +372,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -60.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("player:process_mode")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_e0u25"]
@@ -392,7 +453,7 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("music")
+tracks/5/path = NodePath("musicCalm")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -824,10 +885,15 @@ z_index = -1
 position = Vector2(160, 90)
 texture = SubResource("AtlasTexture_s0dfh")
 
-[node name="music" type="AudioStreamPlayer" parent="."]
+[node name="musicCalm" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_px746")
+parameters/looping = true
+
+[node name="musicIntense" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_px746")
 
 [connection signal="offscreen" from="startSection" to="." method="_on_section_offscreen"]
 [connection signal="moved" from="player" to="." method="_on_player_moved"]
 [connection signal="body_shape_entered" from="water" to="." method="_on_water_entered"]
-[connection signal="finished" from="music" to="music" method="play"]
+[connection signal="finished" from="musicCalm" to="musicCalm" method="play"]
+[connection signal="finished" from="musicIntense" to="musicIntense" method="play"]
