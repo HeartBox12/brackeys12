@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1p4ymvljf843"]
+[gd_scene load_steps=39 format=3 uid="uid://c1p4ymvljf843"]
 
 [ext_resource type="PackedScene" uid="uid://cpavncrwwvunr" path="res://Player/player.tscn" id="1_0n6wn"]
 [ext_resource type="Script" path="res://Level/level.gd" id="1_uctxv"]
@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://uievrkhn2b47" path="res://sounds/sea tower demo 02.ogg" id="8_px746"]
 [ext_resource type="Texture2D" uid="uid://djriamdytudf1" path="res://Level/props/CloudRight.png" id="10_flmu4"]
 [ext_resource type="Texture2D" uid="uid://bqkxm5p21ck0x" path="res://Level/props/CloudLeft.png" id="11_2y7kb"]
+[ext_resource type="Texture2D" uid="uid://ce8ee4dctonos" path="res://Level/props/CloudDark.png" id="12_rt1hm"]
+[ext_resource type="Texture2D" uid="uid://tykmouk0sffq" path="res://Level/ocean.png" id="12_wtqms"]
 
 [sub_resource type="Animation" id="Animation_8aaha"]
 resource_name = "DoubleJump"
@@ -194,6 +196,54 @@ tracks/12/keys = {
 "update": 1,
 "values": [200]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Background/rearLayer/darkClouds:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Background/rearLayer/darkClouds2:visible")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Background/rearLayer/cloudLeft:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Background/rearLayer/cloudRight:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_qtiur"]
 resource_name = "WallJump"
@@ -365,6 +415,54 @@ tracks/6/keys = {
 "update": 1,
 "values": [110, 200]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Background/rearLayer/darkClouds:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Background/rearLayer/darkClouds2:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Background/rearLayer/cloudLeft:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Background/rearLayer/cloudRight:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p0iws"]
 _data = {
@@ -441,6 +539,57 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_icmmi"]
+atlas = ExtResource("12_rt1hm")
+region = Rect2(0, 0, 128, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8k36"]
+atlas = ExtResource("12_rt1hm")
+region = Rect2(0, 16, 128, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otbxt"]
+atlas = ExtResource("12_rt1hm")
+region = Rect2(0, 32, 128, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x0uqq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icmmi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8k36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otbxt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcejq"]
+atlas = ExtResource("12_wtqms")
+region = Rect2(0, 0, 320, 180)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfcvd"]
+atlas = ExtResource("12_wtqms")
+region = Rect2(0, 180, 320, 180)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8akt3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcejq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfcvd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_s0dfh"]
 atlas = ExtResource("5_hu0cw")
 region = Rect2(0, 359, 320, 181)
@@ -448,8 +597,8 @@ region = Rect2(0, 359, 320, 181)
 [node name="level" type="Node2D"]
 script = ExtResource("1_uctxv")
 maxPlayerLead = 200
-waterAccel = 5
-accelCutoff = 12
+waterAccel = 3
+accelCutoff = 10
 
 [node name="startSection" parent="." instance=ExtResource("6_2jsp5")]
 position = Vector2(160, 180)
@@ -472,8 +621,9 @@ position = Vector2(160, 359)
 
 [node name="roar" type="AudioStreamPlayer2D" parent="water"]
 stream = ExtResource("5_rvhjm")
+volume_db = 20.0
 autoplay = true
-max_distance = 100.0
+max_distance = 125.0
 panning_strength = 0.0
 parameters/looping = true
 
@@ -599,7 +749,7 @@ metadata/_edit_lock_ = true
 [node name="Background" type="ParallaxBackground" parent="."]
 
 [node name="frontLayer" type="ParallaxLayer" parent="Background"]
-z_index = 1
+z_index = 2
 motion_mirroring = Vector2(0, 360)
 metadata/_edit_lock_ = true
 
@@ -622,7 +772,6 @@ stretch_mode = 1
 metadata/_edit_lock_ = true
 
 [node name="rearLayer" type="ParallaxLayer" parent="Background"]
-z_index = -1
 motion_scale = Vector2(0, 0)
 metadata/_edit_lock_ = true
 
@@ -640,11 +789,35 @@ autoplay = "default"
 frame = 1
 frame_progress = 0.874818
 
+[node name="darkClouds" type="AnimatedSprite2D" parent="Background/rearLayer"]
+visible = false
+z_index = 1
+position = Vector2(64, 8)
+sprite_frames = SubResource("SpriteFrames_x0uqq")
+autoplay = "default"
+
+[node name="darkClouds2" type="AnimatedSprite2D" parent="Background/rearLayer"]
+visible = false
+z_index = 1
+position = Vector2(256, 8)
+sprite_frames = SubResource("SpriteFrames_x0uqq")
+autoplay = "default"
+
 [node name="Sky" type="ColorRect" parent="Background/rearLayer"]
+z_index = -2
 offset_right = 1152.0
 offset_bottom = 648.0
 color = Color(0.156863, 0.611765, 0.956863, 1)
 metadata/_edit_lock_ = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background"]
+motion_scale = Vector2(0, 0.25)
+
+[node name="ocean" type="AnimatedSprite2D" parent="Background/ParallaxLayer"]
+position = Vector2(0, 30)
+sprite_frames = SubResource("SpriteFrames_8akt3")
+autoplay = "default"
+centered = false
 
 [node name="LighthouseBase" type="Sprite2D" parent="."]
 z_index = -1

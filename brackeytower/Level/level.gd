@@ -15,11 +15,13 @@ var sectionScenes = [preload("res://Level/sections/section_1.tscn"),
 #The sections added to the pool after the double-jump pickup
 var dSectionScenes = [preload("res://Level/sections/section_d1.tscn"),
 preload("res://Level/sections/section_d2.tscn"),
-preload("res://Level/sections/section_d3.tscn")]
+preload("res://Level/sections/section_d3.tscn"),
+preload("res://Level/sections/section_d4.tscn")]
 
 #Sections added to the pool after the wall-jump pickup
 var wSectionScenes = [preload("res://Level/sections/section_w1.tscn"),
-preload("res://Level/sections/section_w2.tscn")]
+preload("res://Level/sections/section_w2.tscn"),
+preload("res://Level/sections/section_w3.tscn")]
 
 var doubleJumpSection = preload("res://Level/sections/dJump_section.tscn")
 var wallJumpSection = preload("res://Level/sections/wJump_section.tscn")

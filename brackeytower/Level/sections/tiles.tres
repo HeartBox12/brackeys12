@@ -1,8 +1,11 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dh5umrf15i87n"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://dh5umrf15i87n"]
 
 [ext_resource type="Texture2D" uid="uid://b16dvsypcrntg" path="res://Level/testTiles.png" id="1_hosjv"]
 [ext_resource type="Texture2D" uid="uid://bwxxnc5l4k842" path="res://Level/props/plats.png" id="1_teecy"]
 [ext_resource type="PackedScene" uid="uid://bibh62tpa3y6t" path="res://Level/props/button.tscn" id="2_jd06w"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_ac5jg"]
+tile_data = PackedInt32Array(0, 65536, 2, 1, 131072, 0, 2, 65536, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lsi1f"]
 texture = ExtResource("1_teecy")
@@ -43,3 +46,4 @@ physics_layer_0/collision_mask = 2
 sources/2 = SubResource("TileSetAtlasSource_b067d")
 sources/3 = SubResource("TileSetScenesCollectionSource_cdcsv")
 sources/0 = SubResource("TileSetAtlasSource_lsi1f")
+pattern_0 = SubResource("TileMapPattern_ac5jg")

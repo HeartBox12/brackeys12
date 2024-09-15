@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=4 uid="uid://dv826fhxehd04"]
+
+[ext_resource type="Script" path="res://Level/sections/section.gd" id="1_rspeu"]
+[ext_resource type="TileSet" uid="uid://dh5umrf15i87n" path="res://Level/sections/tiles.tres" id="2_wlk5s"]
+[ext_resource type="PackedScene" uid="uid://bibh62tpa3y6t" path="res://Level/props/button.tscn" id="3_mmwjj"]
+[ext_resource type="PackedScene" uid="uid://xh14mlxn1gre" path="res://Level/props/cable_straight.tscn" id="4_gm74j"]
+[ext_resource type="PackedScene" uid="uid://cm5gawt6hec7m" path="res://Level/props/cable_turn.tscn" id="5_n5a0c"]
+[ext_resource type="PackedScene" uid="uid://dur7nx6n5ftsn" path="res://Level/props/door.tscn" id="6_ioolj"]
+
+[node name="Section1" type="Node2D"]
+script = ExtResource("1_rspeu")
+
+[node name="nextSpot" type="Marker2D" parent="."]
+position = Vector2(0, -144)
+
+[node name="Tiles" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD/////AAAAAAEAAAAAAP//AAAAAAEAAAD+////AAABAAIAAAABAP//AAAAAAEAAAACAP//AAAAAAEAAAADAP//AAABAAEAAAAAAPn/AAAAAAAAAAAAAPj/AAAAAAAAAAAAAPf/AAAAAAAAAAAAAPb/AAAAAAAAAAAAAPX/AAAAAAAAAAD///X/AAAAAAAAAAD+//X/AAAAAAAAAAD9//X/AAAAAAAAAAD8//X/AAAAAAAAAAD7//X/AAAAAAAAAAD6//X/AAAAAAAAAAD5//X/AAAAAAAAAAAAAPL/AAAAAAAAAAAGAPL/AAAAAAAAAAAGAPP/AAAAAAAAAAAGAPT/AAAAAAAAAAAGAPX/AAAAAAAAAAAGAPb/AAAAAAAAAAAGAPf/AAAAAAAAAAAGAPj/AAAAAAAAAAAGAPn/AAAAAAAAAAAGAPr/AAAAAAAAAAAGAPv/AAAAAAAAAAAGAPz/AAAAAAAAAAAGAP3/AAAAAAAAAAAGAP7/AAABAAEAAAAAAPr/AAABAAEAAAD4//X/AAAAAAIAAAD7//r/AAABAAIAAAD8//r/AAACAAAAAAD9//r/AAABAAEAAAAAAPH/AAAAAAAAAAAAAPD/AAAAAAAAAAABAPD/AAAAAAAAAAACAPD/AAAAAAAAAAADAPD/AAAAAAAAAAAEAPD/AAAAAAAAAAAFAPD/AAAAAAAAAAAGAPD/AAAAAAAAAAAGAPH/AAAAAAAAAAABAPX/AAABAAEAAAA=")
+tile_set = ExtResource("2_wlk5s")
+
+[node name="OnScreenChecker" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(1.14739e-05, -68)
+scale = Vector2(12.8, 7.6)
+metadata/_edit_lock_ = true
+
+[node name="button" parent="." instance=ExtResource("3_mmwjj")]
+position = Vector2(-28, -52)
+
+[node name="cableInstances" type="Node2D" parent="."]
+
+[node name="cableStraight2" parent="cableInstances" instance=ExtResource("4_gm74j")]
+position = Vector2(-28, -68)
+
+[node name="cableStraight" parent="cableInstances" instance=ExtResource("4_gm74j")]
+position = Vector2(-28, -60)
+
+[node name="cableStraight3" parent="cableInstances" instance=ExtResource("4_gm74j")]
+position = Vector2(-28, -76)
+
+[node name="cableStraight4" parent="cableInstances" instance=ExtResource("4_gm74j")]
+position = Vector2(-28, -92)
+
+[node name="cableTurn" parent="cableInstances" instance=ExtResource("5_n5a0c")]
+position = Vector2(-28, -108)
+rotation = 4.71239
+
+[node name="cableStraight5" parent="cableInstances" instance=ExtResource("4_gm74j")]
+position = Vector2(-28, -100)
+
+[node name="cableStraight6" parent="cableInstances" instance=ExtResource("4_gm74j")]
+position = Vector2(-20, -108)
+rotation = 1.5708
+
+[node name="cableStraight7" parent="cableInstances" instance=ExtResource("4_gm74j")]
+position = Vector2(-12, -108)
+rotation = 1.5708
+
+[node name="cableStraight8" parent="cableInstances" instance=ExtResource("4_gm74j")]
+position = Vector2(-4, -108)
+rotation = 1.5708
+
+[node name="door" parent="." instance=ExtResource("6_ioolj")]
+position = Vector2(4, -92)
+
+[connection signal="screen_entered" from="OnScreenChecker" to="." method="_on_screen_entered"]
+[connection signal="screen_exited" from="OnScreenChecker" to="." method="_on_screen_exited"]
+[connection signal="body_shape_entered" from="button" to="door" method="open" flags=6 unbinds=4]
